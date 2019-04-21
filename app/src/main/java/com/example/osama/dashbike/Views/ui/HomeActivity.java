@@ -23,6 +23,11 @@ import com.example.osama.dashbike.R;
 import com.example.osama.dashbike.Repository.BookBikeRepository;
 import com.example.osama.dashbike.Repository.LogoutListener;
 import com.example.osama.dashbike.Repository.LogoutRepository;
+import com.example.osama.dashbike.Repository.NotificationRepository;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
@@ -44,6 +49,25 @@ public class HomeActivity extends AppCompatActivity implements PaymentResultList
         if (ContextCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(HomeActivity.this, new String[]{Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS}, 101);
         }
+
+        //GENERATE NEW FCM TOKEN
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("ERROR", "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+                        NotificationRepository notificationRepository = new NotificationRepository(getApplicationContext());
+                        notificationRepository.sendToken(token);
+                        Log.d("token", token);
+
+                    }
+                });
 
         //ACTIONBAR
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -136,6 +160,8 @@ public class HomeActivity extends AppCompatActivity implements PaymentResultList
         Toast.makeText(getApplication(), s, Toast.LENGTH_SHORT).show();
         //BookBikeRepository bookBikeRepository = new BookBikeRepository(getApplicationContext());
         //bookBikeRepository.getIdAndSetTransactionId(s);
+        NotificationRepository notificationRepository = new NotificationRepository(getApplicationContext());
+        notificationRepository.sendNotification();
 
     }
 

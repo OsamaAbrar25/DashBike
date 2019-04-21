@@ -1,21 +1,30 @@
 package com.example.osama.dashbike.Models;
 
 public class BikesInfo {
-    private String txt1,txt2;
+    private String id, bike_model,txt2, bike_model_id;
     private String imageurl;
 
-    public BikesInfo(String txt1, String txt2, String imageurl){
-        setTxt1(txt1);
+    public BikesInfo(String id, String bike_model, String txt2, String imageurl, String bike_model_id){
+        setId(id);
+        setBike_model(bike_model);
         setTxt2(txt2);
         setImageUrl(imageurl);
+        setBike_model_id(bike_model_id);
     }
 
-    public String getTxt1() {
-        return txt1;
+    public String getId(){
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setTxt1(String txt1) {
-        this.txt1 = txt1;
+    public String getBike_model() {
+        return bike_model;
+    }
+
+    public void setBike_model(String bike_model) {
+        this.bike_model = bike_model;
     }
 
     public String getTxt2() {
@@ -32,6 +41,14 @@ public class BikesInfo {
 
     public void setImageUrl(String imageurl) {
         this.imageurl = imageurl;
+    }
+
+    public String getBike_model_id() {
+        return bike_model_id;
+    }
+
+    public void setBike_model_id(String bike_model_id) {
+        this.bike_model_id = bike_model_id;
     }
 
 }

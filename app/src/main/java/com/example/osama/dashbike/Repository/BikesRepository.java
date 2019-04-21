@@ -48,10 +48,12 @@ public class BikesRepository {
                             int i;
                             for (i = 0; i < response.length(); i++) {
                                 JSONObject jsonObject = (JSONObject) response.get(i);
-                                String c = jsonObject.getString("bike_img");
                                 String a = jsonObject.getString("id");
-                                String b = jsonObject.getString("bike_rate_hr");
-                                BikesInfo bikesinfo = new BikesInfo(a, b, c);
+                                String b = jsonObject.getString("bike_model");
+                                String c = jsonObject.getString("bike_rate_hr");
+                                String d = jsonObject.getString("bike_img");
+                                String e = jsonObject.getString("bike_model_id");
+                                BikesInfo bikesinfo = new BikesInfo(a, b, c, d, e);
                                 arrayList.add(bikesinfo);
                             }
                             mutableLiveData.postValue(arrayList);

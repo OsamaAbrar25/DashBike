@@ -47,7 +47,7 @@ public class DealersRepository {
                                 JSONObject jsonObject = (JSONObject) response.get(i);
                                 String c = jsonObject.getString("thumbnail");
                                 String a = jsonObject.getString("id");
-                                String b = jsonObject.getString("extra_info");
+                                String b = jsonObject.getString("dealer_name");
                                 DealersInfo dealersInfo = new DealersInfo(a, b, c);
                                 arrayList.add(dealersInfo);
                             }

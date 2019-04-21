@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.example.osama.dashbike.Models.DealersInfo;
 import com.example.osama.dashbike.R;
 import com.example.osama.dashbike.Utility.RoundedTransformation;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 public class DealersListAdapter extends RecyclerView.Adapter<DealersListAdapter.DealerListHolder>{
 
     private ArrayList<DealersInfo> arrayList;
-    private ImageLoader imageLoader;
     private FragmentManager fragmentManager;
     private Context context;
 
@@ -67,8 +65,8 @@ public class DealersListAdapter extends RecyclerView.Adapter<DealersListAdapter.
 
         public DealerListHolder(@NonNull View itemView) {
             super(itemView);
-            text = itemView.findViewById(R.id.textView_id);
-            text2 = itemView.findViewById(R.id.textView_info);
+            text = itemView.findViewById(R.id.textView_info);
+            text2 = itemView.findViewById(R.id.textView_dealername);
             image = itemView.findViewById(R.id.imageView_dealerspic);
 
             itemView.setOnClickListener(new View.OnClickListener() {

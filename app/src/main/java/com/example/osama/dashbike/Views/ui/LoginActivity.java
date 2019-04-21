@@ -14,22 +14,22 @@ import com.example.osama.dashbike.Repository.LoginKeyListener;
 import com.example.osama.dashbike.Repository.LoginRepository;
 
 public class LoginActivity extends AppCompatActivity {
-    Button button;
-    EditText editText, editText2;
-    TextView textView, textView2, textView3, textView4;
+    Button button_add;
+    EditText editText_email, editText_password;
+    TextView textView_email, textView_password, textView_1, textView_2;
     LoginRepository loginRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        button = findViewById(R.id.button);
-        editText = findViewById(R.id.editText);
-        editText2 = findViewById(R.id.editText3);
-        textView = findViewById(R.id.textView_bikemodel);
-        textView2 = findViewById(R.id.textView_bikemodel_R);
-        textView3 = findViewById(R.id.textView_rate);
-        textView4 = findViewById(R.id.textView_perhr);
+        button_add = findViewById(R.id.button_add);
+        editText_email = findViewById(R.id.editText_email);
+        editText_password = findViewById(R.id.editText_password);
+        textView_email = findViewById(R.id.textView_email);
+        textView_password = findViewById(R.id.textView_password);
+        textView_1 = findViewById(R.id.textView_1);
+        textView_2 = findViewById(R.id.textView_2);
 
         if(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("KEY",null)!=null){
             //GO TO HOME ACTIVITY
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         //GO TO REGISTRATION ACTIVITY
-         textView4.setOnClickListener(new View.OnClickListener() {
+        textView_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         //ON SIGN-IN BUTTON CLICK
-        button.setOnClickListener(new View.OnClickListener() {
+        button_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginRepository = new LoginRepository(getApplicationContext(), new LoginKeyListener() {
@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 });
-                loginRepository.getLogin(editText.getText().toString(), editText2.getText().toString());
+                loginRepository.getLogin(editText_email.getText().toString(), editText_password.getText().toString());
                 loginRepository.Login();
             }
         });

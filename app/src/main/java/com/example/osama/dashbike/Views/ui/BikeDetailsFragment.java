@@ -48,7 +48,6 @@ public class BikeDetailsFragment extends Fragment {
     Button button_booknow;
     BikeDetailsViewModel bikeDetailsViewModel;
     NetworkImageView imageView_bike;
-    RadioGroup radioGroup;
     int duration;
     String rate ;
     String duration_unit;
@@ -92,42 +91,6 @@ public class BikeDetailsFragment extends Fragment {
         imageView_bike = view.findViewById(R.id.imageView_bike);
         //radioGroup = view.findViewById(R.id.radioGroup);
         spinner = view.findViewById(R.id.spinner);
-
-        //RADIO BUTTONS FUNCTIONALITY
-        /*radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
-                    case R.id.radioButton_hr:
-                        numberPicker.setMinValue(1);
-                        numberPicker.setMaxValue(12);
-                        if(bikeDetailsInfo!=null){
-                            rate = bikeDetailsInfo.get(0).getBike_rate_hr();
-                        }
-                        break;
-                    case R.id.radioButton_hday:
-                        numberPicker.setMinValue(1);
-                        numberPicker.setMaxValue(1);
-                        if(bikeDetailsInfo!=null){
-                            rate = bikeDetailsInfo.get(0).getBike_rate_h();
-                        }
-                        break;
-                    case R.id.radioButton_fday:
-                        numberPicker.setMinValue(1);
-                        numberPicker.setMaxValue(20);
-                        if(bikeDetailsInfo!=null){
-                            rate = bikeDetailsInfo.get(0).getBike_rate_f();
-                        }
-                        break;
-                    default:
-                        numberPicker.setMinValue(0);
-                        numberPicker.setMaxValue(0);
-                        //FIX HOUR SPINNER ISSUE, TIME GOES IN NEGATIVE, AND ALSO FIX TIME RANGE ISSUE
-                        //ALSO THINK SOMETHING TO SHOW END TIME AND DATE AFTER THE USER CHOOSES THE DURATION
-                }
-            }
-        });
-        */
 
 
         //DURATION PICKER
